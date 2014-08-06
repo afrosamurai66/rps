@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A silly child's game</title>
+
+    <!-- load Bootstrap CSS to style the page -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/game.css">
+  </head>
+  <body>
+    
+    <div class="container">
+
+      <div class="row">
+        <div class="col-xs-12 centered alert alert-info">
+          <h1>Rock, Paper, Scissors</h1>
+          <h3>See if you can beat the computer!</h3>
+        </div>
+      </div>
+
+      <div class="row" id="choices">
+
+        <div class="col-xs-4 centered">
+          <a id="rock" href="#" class="btn btn-primary btn-lg choice" role="button" data-choice="rock">
+            <i class="fa fa-cube fa-5x"></i><br/>Rock</a>
+        </div>
+
+        <div class="col-xs-4 centered">
+          <a id="paper" href="#" class="btn btn-primary btn-lg choice" role="button" data-choice="paper">
+            <i class="fa fa-file-o fa-5x"></i><br/>Paper</a>
+        </div>
+
+        <div class="col-xs-4 centered">
+          <a id="scissors" href="#" class="btn btn-primary btn-lg choice" role="button" data-choice="scissors">
+            <i class="fa fa-cut fa-5x"></i><br/>Scissors</a>
+        </div>
+
+      </div>
+
+      <div class="row results" id="results">
+        <div class="col-xs-6 col-xs-offset-3 centered alert" id="result-alert">
+          <h2>Game Result</h2>
+          <h4>
+            <i class="fa fa-user fa-3x"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>
+              <i id="human-choice" class="fa fa-3x"></i>
+            </span>
+          </h4>
+          <h4>
+            <i class="fa fa-laptop fa-3x"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>
+              <i id="computer-choice" class="fa fa-3x"></i>
+            </span>
+          </h4>
+          <a id="play-again" href="#" class="btn btn-primary btn-lg" role="button">
+            <i class="fa fa-repeat fa-2x"></i>&nbsp;&nbsp;&nbsp;Play Again</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3 centered alert alert-warning">
+          <h2>Scores</h2>
+          <h4><i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="human-score">0</span></h4>
+          <h4><i class="fa fa-laptop fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="computer-score">0</span></h4>
+          <h4><i class="fa fa-flag fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="tie-score">0</span></h4>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- load javascript files & execute them on the page -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/game.js"></script>
+  </body>
+</html>
