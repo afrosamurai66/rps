@@ -12,25 +12,41 @@ $(function() {
 		"paper",
 		"scissors" 
 	],
+	iconClasses = {
+		rock: 'fa fa-3x fa-cube',
+		paper: 'fa fa-3x fa-file-o',
+		scissors: 'fa fa-3x fa-cut'
+	},
 	userChoice = null,
-	computerChoice = null;
+	computerChoice = null,
+	winner = null;
 
-	// get & save user's choice
-	var getUserChoice = function( choice ) {
-		userChoice = choice;
-		$('#human-choice').addClass('fa-' + userChoice);
+	// display result icons and color background
+	var setResultClasses = function() {
+		// set icons
+		$('#human-choice').attr('class', iconClasses[userChoice]);
+		$('#computer-choice').attr('class', iconClasses[computerChoice]);
+		
+		// set background
+		if ( winner === 'user' ) {
+			$('#result-alert').removeClass('alert-danger alert-warning').addClass('alert-success');
+		}
+		else if ( winner === 'computer' ) {
+			$('#result-alert').removeClass('alert-success alert-warning').addClass('alert-danger');
+		}
+		else {
+			$('#result-alert').removeClass('alert-danger alert-success').addClass('alert-warning');
+		}
 	};
 
 	// get & save computer's choice
 	var getComputerChoice = function() {
 		// select a random choice
 		computerChoice = choices[Math.floor(Math.random()*choices.length)];
-			$('#computer-choice').addClass('fa-' + computerChoice);
 	};
 
 	// compare choices to see who won
 	var compareChoices = function() {
-		console.log(userChoice, computerChoice);
 		if ( userChoice === computerChoice ) {
 			// draw
 			winner = 'draw';
@@ -53,7 +69,7 @@ $(function() {
 		else if ( userChoice === 'scissors' && computerChoice === 'rock' ) {
 			winner = 'computer';
 		}
-		updateScores( winner );
+		updateScores();
 	};
 
 	var resetChoices = function() {
@@ -72,7 +88,7 @@ $(function() {
 	};
 
 	// update scores
-	var updateScores = function( winner ) {
+	var updateScores = function() {
 		if ( winner === 'user' ) {
 			scores.user += 1;
 			$('#human-score').html(scores.user);
@@ -91,9 +107,10 @@ $(function() {
 	var setupEvents = function() {
 		// handle choice button click
 		$('.choice').on('click', function(e) {
-			getUserChoice( $(this).attr('data-choice') );
+			userChoice = $(this).attr('data-choice');
 			getComputerChoice();
 			compareChoices();
+			setResultClasses();
 			toggleChoices();
 			toggleResults();
 		});
